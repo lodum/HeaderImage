@@ -1,7 +1,8 @@
-int boxSize      = 15;
+int boxSize      = 2;
 int space        = 1;
-int canvasWidth  = (boxSize + space) * 100;
-int canvasHeight = (boxSize + space) * 6;
+int rows         = 32;
+int canvasWidth  = (boxSize + space) * 500;
+int canvasHeight = (boxSize + space) * rows;
 
 PGraphics pg;
 
@@ -38,13 +39,10 @@ void draw() {
       int randomColor = int(random(palette.length));
       int randomAlpha = int(random(alphas.length));
       
-      fill(palette[randomColor], (alphas[randomAlpha])/row);
+      fill(palette[randomColor], (alphas[randomAlpha]) / (row-sqrt(row)));
       
-      x = x +space + boxSize;
-      rect(x, y, boxSize, boxSize);
-      
-      println(x);
-      println(y);
+      x = x + space + boxSize;
+      rect(x, y, boxSize, boxSize);      
     }
   }
   noLoop();
